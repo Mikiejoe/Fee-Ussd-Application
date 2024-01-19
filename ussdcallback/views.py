@@ -97,6 +97,7 @@ def ussd_callback(request):
         else:
             response = "END You need to register"
     elif cpin:
+        print(cpin==pin)
         if text == f"1*{cpin}*1":
             response = pay_fee()
         elif text == f"1*{cpin}*2":
@@ -105,7 +106,12 @@ def ussd_callback(request):
             response = showbalance(phone_number)
         elif text == f"1*{cpin}*4":
             response = fee_structure()
-            
+        elif len(user_input) >= 4 and user_input[0]=='1':
+            amount = (user_input[3])
+            response = get_phone() 
+            if len(user_input) == 5:
+                response = f"CON Phone is {user_input[-1]}"
+                 
     # eli
     return HttpResponse(response)
 
@@ -151,7 +157,7 @@ def main_menu(phone_number):
     response = f"CON Hey {user.name} What would you like to do?\n"
     response += "1 Pay fees\n"
     response += "2. View fee statement\n"
-    response += "4. View fee balance\n"
+    response += "3. View fee balance\n"
     response += "4. View fee structure\n"
     return response
 
