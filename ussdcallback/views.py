@@ -4,7 +4,9 @@ from rest_framework.decorators import api_view
 import re
 from .models import Student,Fees,Transaction
 from .serializers import StudentSerializer,FeeSerializer,TransactionSerializer
-# Create your views here.
+from django.core.mail import EmailMessage,send_mail
+from django.conf import settings
+
 @api_view(["POST"])
 def create_student(request):
     data = request.data
@@ -65,7 +67,7 @@ def ussd_callback(request):
                 response = "END Student with that registration number does not exist!!"
                 
            
-                
+        #  mjnh rwyc zxqh ieri       
            
         else:
             response = "END Not a valid registration number!!"
@@ -198,3 +200,9 @@ def stk_push(phone,amount):
 
 def daraja_response(request):
     pass
+
+
+def send(request):
+    response = send_mail(subject="test",message="message",recipient_list=["mjosephomondi@gmail.com"],from_email=settings.EMAIL_HOST_USER)
+    return HttpResponse(response)
+    

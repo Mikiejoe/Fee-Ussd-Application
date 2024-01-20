@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-u74%sk37853dp#nqf28jm=ety7!#*-zoi3ys&2%+5r#!in0-)h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -67,10 +67,10 @@ WSGI_APPLICATION = 'USSD.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'feeussd',
-        'PORT': 3306,
-        'PASSWORD': "",
-        "HOST":"localhost",
+        'NAME': 'railway',
+        'PORT': 11342,
+        'PASSWORD': "3b3caeA6hHBh13cG4Dg4bfgEgHBAcae4",
+        "HOST":"viaduct.proxy.rlwy.net",
         "USER": "root",
     }
 }
@@ -114,5 +114,13 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
+# EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'omoshjoe02@gmail.com'
+EMAIL_HOST_PASSWORD = "pzua zbqv kxsw jlbm"
+
